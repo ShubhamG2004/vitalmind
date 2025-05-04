@@ -29,3 +29,7 @@ NextAuth.js	       - Authentication (Google + Credentials)
 Gemini API	       - AI integration for health recommendations
 Tailwind CSS	     - Utility-first CSS framework
 
+index.js Page : -
+![App Preview](./assets/Hero.png)
+
+
