@@ -27,12 +27,15 @@ This platform enables users to log their health records, receive AI-generated su
 
 6.Secure Sessions and CSRF protection
 
-7.Fully Responsive UI with Tailwind CSS
+7.Fully Responsive UI with Tailwind CSS..
+
+
 
 
 
 
 🛠 Tech Stack            Technology	Description
+
 
 Next.js	           - React Framework for SSR & routing
 
@@ -45,7 +48,8 @@ Gemini API	       - AI integration for health recommendations
 Tailwind CSS	     - Utility-first CSS framework
 
 
-index.js Page :-
+
+- index.js Page :-
 
 
 ![image alt](https://github.com/ShubhamG2004/vitalmind/blob/master/d1.png?raw=true)
