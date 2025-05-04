@@ -30,7 +30,10 @@ This platform enables users to log their health records, receive AI-generated su
 7.Fully Responsive UI with Tailwind CSS
 
 
+
+
 🛠 Tech Stack            Technology	Description
+
 Next.js	           - React Framework for SSR & routing
 
 MongoDB Atlas	     - Cloud database hosted via Azure
@@ -43,6 +46,7 @@ Tailwind CSS	     - Utility-first CSS framework
 
 
 index.js Page :-
+
 
 ![image alt](https://github.com/ShubhamG2004/vitalmind/blob/master/dashboard.png?raw=true)
 
