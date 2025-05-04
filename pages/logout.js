@@ -9,7 +9,7 @@ export default function Logout() {
 
   useEffect(() => {
     signOut({ redirect: false });
-    router.push("/"); // Redirect to home page after logout
+    router.push("/"); 
   }, []);
 
   return (

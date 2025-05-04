@@ -16,12 +16,12 @@ export default function SignUp() {
     setError("");
 
     try {
-      const res = await axios.post("/api/auth/signup", { // Changed endpoint to signup
+      const res = await axios.post("/api/auth/signup", { 
         email,
         password,
       });
 
-      if (res.status === 201) { // Changed to 201 for created
+      if (res.status === 201) { 
         router.push("/auth/signin");
       }
     } catch (err) {

@@ -9,18 +9,18 @@ export default function SignIn({ csrfToken }) {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    // Sign in using credentials
+    // Sign  credentials
     const res = await signIn("credentials", {
-      redirect: false, // Do not automatically redirect, we will handle it ourselves
+      redirect: false, 
       email,
       password,
     });
 
     if (res?.error) {
-      alert("Invalid credentials"); // Handle error case
+      alert("Invalid credentials"); 
     } else {
-      // Redirect to the homepage on success
-      router.push("/"); // Redirect to the homepage after successful sign-in
+      
+      router.push("/"); 
     }
   };
 
@@ -35,7 +35,7 @@ export default function SignIn({ csrfToken }) {
 
           {/* Credentials Form */}
           <form
-            onSubmit={handleSignIn} // Handle form submission
+            onSubmit={handleSignIn} 
             className="space-y-6"
           >
             <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
@@ -84,7 +84,7 @@ export default function SignIn({ csrfToken }) {
 
           {/* Google Sign In */}
           <button
-            onClick={() => signIn("google", { callbackUrl: "/" })} // Redirect to homepage after Google sign-in
+            onClick={() => signIn("google", { callbackUrl: "/" })} 
             className="w-full flex items-center justify-center gap-3 bg-white border border-gray-300 hover:border-gray-400 text-gray-700 font-medium py-3 px-4 rounded-lg shadow-sm hover:shadow-md transition duration-200"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">

@@ -22,7 +22,7 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* Mobile Sidebar Toggle */}
+     
       <input type="checkbox" id="sidebar-toggle" className="peer hidden" />
       <label
         htmlFor="sidebar-toggle"
@@ -31,10 +31,10 @@ export default function Sidebar() {
         <FiMenu size={24} />
       </label>
 
-      {/* Sidebar */}
+      
       <div className="fixed top-0 left-0 h-screen w-72 bg-white text-gray-800 shadow-2xl transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out peer-checked:translate-x-0 z-30 border-r border-gray-100">
         <div className="flex flex-col h-full p-6">
-          {/* Logo/Brand */}
+       
           <div className="flex items-center justify-center mb-10">
             <div className="flex flex-col items-center">
               <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center shadow-md mb-3">
@@ -47,7 +47,6 @@ export default function Sidebar() {
             </div>
           </div>
 
-          {/* Navigation */}
           <nav className="flex-1 space-y-2">
             {navItems.map((item) => (
               <Link
@@ -72,7 +71,6 @@ export default function Sidebar() {
             ))}
           </nav>
 
-          {/* Logout Button */}
           <button
             onClick={handleLogout}
             className="flex items-center px-4 py-3 rounded-xl mt-auto bg-gradient-to-r from-red-100 to-pink-100 text-red-600 hover:from-red-200 hover:to-pink-200 hover:text-red-700 transition-all shadow-sm border border-red-100"
@@ -85,7 +83,6 @@ export default function Sidebar() {
         </div>
       </div>
 
-      {/* Overlay for mobile */}
       <label
         htmlFor="sidebar-toggle"
         className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm z-20 lg:hidden hidden peer-checked:block cursor-pointer"

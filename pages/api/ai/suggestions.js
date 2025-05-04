@@ -11,10 +11,8 @@ export default async function handler(req, res) {
   try {
     const { sleepHours, waterIntake, meals, mood, notes } = req.body;
 
-    // Get the Gemini Pro model
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    // Create a prompt for health suggestions
     const prompt = `
       Act as a professional health advisor. Based on the following daily health metrics, 
       provide 3 practical, actionable suggestions to improve the user's health and wellbeing.
@@ -35,22 +33,20 @@ export default async function handler(req, res) {
       Make the tone encouraging and positive. If any metrics are missing, provide general health tips.
     `;
 
-    // Generate content
     const result = await model.generateContent(prompt);
     const response = await result.response;
     const text = response.text();
 
-    // Format the response to only include the first 3 suggestions
     const suggestions = text
       .split('\n')
       .filter(line => line.trim().length > 0)
-      .slice(0, 3)  // Take only the first 3 suggestions
+      .slice(0, 3)  
       .join('\n');
 
     res.status(200).json({ suggestion: suggestions });
   } catch (error) {
     console.error('Gemini API Error:', error);
-    // Fallback suggestions if Gemini fails
+   
     const fallbackSuggestions = [
       "1. Aim for 7-9 hours of sleep each night for optimal recovery",
       "2. Drink at least 2 liters of water daily to stay hydrated",

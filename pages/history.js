@@ -112,7 +112,6 @@ export default function History() {
           </p>
         </div>
 
-        {/* Search & Export */}
         <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
           <div className="relative w-full sm:w-1/2">
             <input

@@ -11,10 +11,9 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <SessionProvider session={pageProps.session}>
-      {/* Render Sidebar only if the route isn't in hideSidebarRoutes */}
+      
       {showSidebar && <Sidebar />}
 
-      {/* Apply appropriate margin when Sidebar is shown */}
       <div className={showSidebar ? "ml-[250px] p-6" : "p-6"}>
         <Component {...pageProps} />
       </div>

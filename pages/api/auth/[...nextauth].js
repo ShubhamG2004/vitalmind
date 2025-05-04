@@ -16,8 +16,7 @@ export default NextAuth({
       async authorize(credentials) {
         try {
           const client = await clientPromise;
-          const db = client.db(); // should now work properly
-
+          const db = client.db(); 
           const user = await db.collection('users').findOne({
             email: credentials.email?.toLowerCase()
           });
