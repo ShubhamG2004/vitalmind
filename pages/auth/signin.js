@@ -76,7 +76,6 @@ export default function SignIn({ csrfToken }) {
             </button>
           </form>
 
-          {/* Divider */}
           <div className="flex items-center my-6">
             <div className="flex-1 border-t border-gray-300"></div>
             <div className="px-3 text-gray-500">or</div>
@@ -95,7 +94,7 @@ export default function SignIn({ csrfToken }) {
           </button>
 
           <div className="mt-6 text-center text-sm text-gray-600">
-            Don't have an account?{' '}
+            Don&apos;t have an account?{' '}
             <a href="#" className="text-blue-600 hover:text-blue-800 font-medium">
               Sign up
             </a>

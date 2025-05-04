@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
+import Link from 'next/link';
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
@@ -111,9 +112,7 @@ export default function SignUp() {
         <div className="text-center text-sm text-gray-600">
           <p>
             Already have an account?{' '}
-            <a href="/auth/signin" className="font-medium text-blue-600 hover:text-blue-500">
-              Sign in
-            </a>
+            <Link href="/auth/signin" className="text-blue-600">Sign in</Link>
           </p>
         </div>
       </div>
