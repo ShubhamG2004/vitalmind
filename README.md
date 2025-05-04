@@ -31,6 +31,6 @@ Tailwind CSS	     - Utility-first CSS framework
 
 index.js Page :-
 
-![image alt] (https://github.com/ShubhamG2004/vitalmind/blob/master/dashboard.png?raw=true)
+![image alt](https://github.com/ShubhamG2004/vitalmind/blob/master/dashboard.png?raw=true)
 
 
