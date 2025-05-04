@@ -30,6 +30,6 @@ Gemini API	       - AI integration for health recommendations
 Tailwind CSS	     - Utility-first CSS framework
 
 index.js Page : -
-![App Preview](./assets/Hero.png)
+![image alt] (https://github.com/ShubhamG2004/vitalmind/blob/master/dashboard.png?raw=true)
 
 
