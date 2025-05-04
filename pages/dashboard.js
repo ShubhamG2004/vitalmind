@@ -343,7 +343,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Mood Chart */}
+      {/* Mood Chart
       <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 mb-8">
         <h3 className="text-lg font-semibold mb-4 text-gray-800 flex items-center gap-2">
           <FiHeart className="text-orange-500" /> Mood Trend (Last 7 Days)
@@ -378,7 +378,7 @@ export default function Dashboard() {
             }} 
           />
         </div>
-      </div>
+      </div> */}
 
       {/* Recent Meals */}
       {logs.length > 0 && (

@@ -1,18 +1,20 @@
-// pages/_app.js
-
 import { useRouter } from "next/router";
 import { SessionProvider } from "next-auth/react";
-import Sidebar from "./Sidebar"; // If Sidebar.js is inside /pages
+import Sidebar from "./Sidebar"; 
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
-  const hideSidebarRoutes = ["/"]; // Add more if needed
+  const hideSidebarRoutes = ["/", "/auth/signin", "/auth/signup", "/forgot-password"];
+
   const showSidebar = !hideSidebarRoutes.includes(router.pathname);
 
   return (
     <SessionProvider session={pageProps.session}>
+      {/* Render Sidebar only if the route isn't in hideSidebarRoutes */}
       {showSidebar && <Sidebar />}
+
+      {/* Apply appropriate margin when Sidebar is shown */}
       <div className={showSidebar ? "ml-[250px] p-6" : "p-6"}>
         <Component {...pageProps} />
       </div>

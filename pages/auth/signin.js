@@ -1,6 +1,29 @@
 import { signIn, getCsrfToken } from "next-auth/react";
+import { useRouter } from 'next/router'; // Import useRouter for redirection
 
 export default function SignIn({ csrfToken }) {
+  const router = useRouter();
+
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    // Sign in using credentials
+    const res = await signIn("credentials", {
+      redirect: false, // Do not automatically redirect, we will handle it ourselves
+      email,
+      password,
+    });
+
+    if (res?.error) {
+      alert("Invalid credentials"); // Handle error case
+    } else {
+      // Redirect to the homepage on success
+      router.push("/"); // Redirect to the homepage after successful sign-in
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-white rounded-xl shadow-lg overflow-hidden">
@@ -12,12 +35,11 @@ export default function SignIn({ csrfToken }) {
 
           {/* Credentials Form */}
           <form
-            method="post"
-            action="/api/auth/callback/credentials"
+            onSubmit={handleSignIn} // Handle form submission
             className="space-y-6"
           >
             <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
-            
+
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                 Email
@@ -31,7 +53,7 @@ export default function SignIn({ csrfToken }) {
                 required
               />
             </div>
-            
+
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
                 Password
@@ -45,7 +67,7 @@ export default function SignIn({ csrfToken }) {
                 required
               />
             </div>
-            
+
             <button
               type="submit"
               className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg shadow-md hover:shadow-lg transition duration-200 transform hover:-translate-y-0.5"
@@ -63,7 +85,7 @@ export default function SignIn({ csrfToken }) {
 
           {/* Google Sign In */}
           <button
-            onClick={() => signIn("google")}
+            onClick={() => signIn("google", { callbackUrl: "/" })} // Redirect to homepage after Google sign-in
             className="w-full flex items-center justify-center gap-3 bg-white border border-gray-300 hover:border-gray-400 text-gray-700 font-medium py-3 px-4 rounded-lg shadow-sm hover:shadow-md transition duration-200"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
