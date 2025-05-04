@@ -29,7 +29,8 @@ NextAuth.js	       - Authentication (Google + Credentials)
 Gemini API	       - AI integration for health recommendations
 Tailwind CSS	     - Utility-first CSS framework
 
-index.js Page : -
+index.js Page :-
+
 ![image alt] (https://github.com/ShubhamG2004/vitalmind/blob/master/dashboard.png?raw=true)
 
 
