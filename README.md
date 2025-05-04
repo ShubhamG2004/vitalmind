@@ -1,7 +1,11 @@
 🩺 VitalMind - Personal Health Diary with AI
+
+
+
 A full-stack AI-powered Personal Health Diary web application built with Next.js, MongoDB Atlas (via Azure), NextAuth for authentication, and Gemini API for AI-based health insights.
 
 Overview
+
 This platform enables users to log their health records, receive AI-generated suggestions, and manage their wellness journey efficiently in one place. With secure authentication and cloud-based database integration, the app is responsive, scalable, and user-friendly.
 
 🚀 Features
