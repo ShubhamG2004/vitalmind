@@ -15,33 +15,29 @@ export default NextAuth({
       },
       async authorize(credentials) {
         try {
-          // Connect to MongoDB
           const client = await clientPromise;
-          const db = client.db();
-          
-          // Find user by email
+          const db = client.db(); // should now work properly
+
           const user = await db.collection('users').findOne({
-            email: credentials.email.toLowerCase()
+            email: credentials.email?.toLowerCase()
           });
 
-          if (!user) {
-            throw new Error('No user found with this email');
+          if (!user || !user.password) {
+            throw new Error('Invalid email or password');
           }
 
-          // Verify password
           const isValid = await compare(credentials.password, user.password);
           if (!isValid) {
-            throw new Error('Invalid password');
+            throw new Error('Invalid email or password');
           }
 
-          // Return user object without password
           return {
             id: user._id.toString(),
             email: user.email,
             name: user.name
           };
         } catch (error) {
-          console.error('Authentication error:', error);
+          console.error('Auth error:', error);
           return null;
         }
       }
@@ -62,44 +58,38 @@ export default NextAuth({
       }
     })
   ],
+  adapter: MongoDBAdapter(clientPromise),
   session: {
     strategy: "jwt",
-    maxAge: 30 * 24 * 60 * 60, 
-    updateAge: 24 * 60 * 60 
+    maxAge: 30 * 24 * 60 * 60,
+    updateAge: 24 * 60 * 60
   },
   pages: {
     signIn: "/auth/signin",
-    error: "/auth/signin" // Error code passed in query string as ?error=
+    error: "/auth/signin"
   },
-  adapter: MongoDBAdapter(clientPromise),
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async jwt({ token, user }) {
-      if (user) {
-        token.id = user.id;
-      }
+      if (user) token.id = user.id;
       return token;
     },
     async session({ session, token }) {
-      session.user.id = token.id;
+      if (token?.id) session.user.id = token.id;
       return session;
     },
     async redirect({ url, baseUrl }) {
-      // Allows relative callback URLs
-      if (url.startsWith("/")) return `${baseUrl}${url}`;
-      // Allows callback URLs on the same origin
-      else if (new URL(url).origin === baseUrl) return url;
-      return baseUrl;
+      return url.startsWith("/") ? `${baseUrl}${url}` : (new URL(url).origin === baseUrl ? url : baseUrl);
     }
   },
   events: {
     async createUser({ user }) {
       console.log('User created:', user.email);
     },
-    async signIn({ user, account, profile }) {
+    async signIn({ user }) {
       console.log('User signed in:', user.email);
     },
-    async signOut({ token, session }) {
+    async signOut({ token }) {
       console.log('User signed out:', token.email);
     }
   },

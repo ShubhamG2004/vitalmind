@@ -15,7 +15,6 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     const { week, logs } = req.body;
 
-    // TODO: Call Gemini API here. For now, mock the suggestion:
     const suggestionText = `Based on your logs, aim to increase water intake and sleep more consistently.`;
 
     const suggestion = await Suggestion.create({

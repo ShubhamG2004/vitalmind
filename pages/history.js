@@ -2,12 +2,21 @@ import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { FiClock, FiDroplet, FiCoffee, FiSmile, FiFileText, FiCalendar } from "react-icons/fi";
+import {
+  FiClock,
+  FiDroplet,
+  FiCoffee,
+  FiSmile,
+  FiFileText,
+  FiCalendar,
+} from "react-icons/fi";
 
 export default function History() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const [logs, setLogs] = useState([]);
+  const [filteredLogs, setFilteredLogs] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -20,11 +29,34 @@ export default function History() {
       setIsLoading(true);
       const res = await axios.get("/api/healthlog");
       setLogs(res.data);
+      setFilteredLogs(res.data);
     } catch (error) {
       console.error("Failed to fetch logs:", error);
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleSearch = (e) => {
+    const query = e.target.value.toLowerCase();
+    setSearchQuery(query);
+
+    const filtered = logs.filter((log) => {
+      const dateString = new Date(log.date).toLocaleDateString("en-US", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+
+      return (
+        log.mood?.toLowerCase().includes(query) ||
+        log.notes?.toLowerCase().includes(query) ||
+        dateString.toLowerCase().includes(query)
+      );
+    });
+
+    setFilteredLogs(filtered);
   };
 
   if (status === "loading" || isLoading) {
@@ -50,7 +82,18 @@ export default function History() {
           </p>
         </div>
 
-        {logs.length === 0 ? (
+        {/* Search Bar */}
+        <div className="mb-6">
+          <input
+            type="text"
+            placeholder="Search by mood, date, or notes..."
+            value={searchQuery}
+            onChange={handleSearch}
+            className="w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        {filteredLogs.length === 0 ? (
           <div className="text-center py-12">
             <div className="mx-auto h-24 w-24 text-gray-400 mb-4">
               <svg
@@ -67,9 +110,9 @@ export default function History() {
                 />
               </svg>
             </div>
-            <h3 className="text-lg font-medium text-gray-900">No entries yet</h3>
+            <h3 className="text-lg font-medium text-gray-900">No matching entries</h3>
             <p className="mt-1 text-sm text-gray-500">
-              Start tracking your health to see your history here.
+              Try adjusting your search terms or create a new log.
             </p>
             <div className="mt-6">
               <button
@@ -82,7 +125,7 @@ export default function History() {
           </div>
         ) : (
           <div className="space-y-6">
-            {logs.map((log) => (
+            {filteredLogs.map((log) => (
               <div
                 key={log._id}
                 className="bg-white overflow-hidden shadow rounded-lg transition-all duration-200 hover:shadow-md"
@@ -103,83 +146,47 @@ export default function History() {
                     </span>
                   </div>
                 </div>
+
                 <div className="border-t border-gray-200 px-4 py-5 sm:p-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500">
-                        <FiClock size={20} />
-                      </div>
-                      <div className="ml-4">
-                        <dt className="text-sm font-medium text-gray-500">
-                          Sleep Hours
-                        </dt>
-                        <dd className="mt-1 text-lg font-semibold text-gray-900">
-                          {log.sleepHours} hours
-                        </dd>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500">
-                        <FiDroplet size={20} />
-                      </div>
-                      <div className="ml-4">
-                        <dt className="text-sm font-medium text-gray-500">
-                          Water Intake
-                        </dt>
-                        <dd className="mt-1 text-lg font-semibold text-gray-900">
-                          {log.waterIntake} liters
-                        </dd>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500">
-                        <FiCoffee size={20} />
-                      </div>
-                      <div className="ml-4">
-                        <dt className="text-sm font-medium text-gray-500">
-                          Meals
-                        </dt>
-                        <dd className="mt-1 text-lg font-semibold text-gray-900">
-                          {log.meals}
-                        </dd>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500">
-                        <FiSmile size={20} />
-                      </div>
-                      <div className="ml-4">
-                        <dt className="text-sm font-medium text-gray-500">
-                          Mood
-                        </dt>
-                        <dd className="mt-1 text-lg font-semibold text-gray-900">
-                          {log.mood}
-                        </dd>
-                      </div>
-                    </div>
+                    {/* Sleep */}
+                    <Item
+                      icon={<FiClock size={20} />}
+                      title="Sleep Hours"
+                      value={`${log.sleepHours} hours`}
+                    />
+                    {/* Water */}
+                    <Item
+                      icon={<FiDroplet size={20} />}
+                      title="Water Intake"
+                      value={`${log.waterIntake} liters`}
+                    />
+                    {/* Meals */}
+                    <Item
+                      icon={<FiCoffee size={20} />}
+                      title="Meals"
+                      value={log.meals}
+                    />
+                    {/* Mood */}
+                    <Item
+                      icon={<FiSmile size={20} />}
+                      title="Mood"
+                      value={log.mood}
+                    />
                   </div>
 
+                  {/* Notes */}
                   {log.notes && (
                     <div className="mt-6">
-                      <div className="flex items-start">
-                        <div className="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500">
-                          <FiFileText size={20} />
-                        </div>
-                        <div className="ml-4">
-                          <dt className="text-sm font-medium text-gray-500">
-                            Notes
-                          </dt>
-                          <dd className="mt-1 text-gray-700">
-                            {log.notes}
-                          </dd>
-                        </div>
-                      </div>
+                      <Item
+                        icon={<FiFileText size={20} />}
+                        title="Notes"
+                        value={log.notes}
+                      />
                     </div>
                   )}
 
+                  {/* AI Suggestion */}
                   {log.aiSuggestion && (
                     <div className="mt-6 bg-green-50 rounded-lg p-4 border border-green-100">
                       <h4 className="text-sm font-medium text-green-800 flex items-center">
@@ -207,6 +214,21 @@ export default function History() {
             ))}
           </div>
         )}
+      </div>
+    </div>
+  );
+}
+
+// 🧩 Reusable Component for Icons + Info
+function Item({ icon, title, value }) {
+  return (
+    <div className="flex items-start">
+      <div className="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500">
+        {icon}
+      </div>
+      <div className="ml-4">
+        <dt className="text-sm font-medium text-gray-500">{title}</dt>
+        <dd className="mt-1 text-lg font-semibold text-gray-900">{value}</dd>
       </div>
     </div>
   );
