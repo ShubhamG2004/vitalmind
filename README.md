@@ -1,5 +1,10 @@
 🩺 VitalMind - Personal Health Diary with AI
 
+Problem Statement - 
+2. Personal Health Diary with AI
+Create a full-stack app that tracks user health data, uses AI to suggest improvements, and 
+stores data securely.
+• Azure Service: Azure Health Bot + Azure Cosmos DB
 
 
 A full-stack AI-powered Personal Health Diary web application built with Next.js, MongoDB Atlas (via Azure), NextAuth for authentication, and Gemini API for AI-based health insights.
