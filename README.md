@@ -6,8 +6,18 @@ Create a full-stack app that tracks user health data, uses AI to suggest improve
 stores data securely.
 • Azure Service: Azure Health Bot + Azure Cosmos DB
 
-
 A full-stack AI-powered Personal Health Diary web application built with Next.js, MongoDB Atlas (via Azure), NextAuth for authentication, and Gemini API for AI-based health insights.
+
+## 📑 Table of Contents
+
+- [Overview](#Overview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Screenshots](#screenshots)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Overview
 
@@ -44,8 +54,8 @@ Gemini API	       - AI integration for health recommendations
 Tailwind CSS	     - Utility-first CSS framework.
 
 *********************************************
-
-
+## Pages 
+********************************************
 ## (1)index.js Page :-
 
 1.Responsive Landing Page: Features a modern UI with navbar (VitalMind logo + login/dashboard button) and responsive design for all devices.
