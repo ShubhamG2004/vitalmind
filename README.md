@@ -13,11 +13,11 @@ A full-stack AI-powered Personal Health Diary web application built with Next.js
 - [Overview](#Overview)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Screenshots](#screenshots)
+- [Web Pages](#Web-Pages)
+- [Process](#process)
+- [Future scope](#future-scope)
 - [Contributing](#contributing)
-- [License](#license)
+
 
 ## Overview
 
@@ -54,7 +54,7 @@ Gemini API	       - AI integration for health recommendations
 Tailwind CSS	     - Utility-first CSS framework.
 
 *********************************************
-## Pages 
+## Web Pages 
 ********************************************
 ## (1)index.js Page :-
 
