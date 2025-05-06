@@ -16,6 +16,7 @@ A full-stack AI-powered Personal Health Diary web application built with Next.js
 - [Web Pages](#Web-Pages)
 - [Process](#process)
 - [Future scope](#future-scope)
+- [Installation](#installation)
 - [Contributing](#contributing)
 
 
@@ -201,6 +202,33 @@ Deploy the app using Vercel for frontend and connect to MongoDB Atlas.
 
 5.Multilingual Support: Expand accessibility by offering the app in regional and international languages for wider user adoption.
 
+********************************************
+## Installation
 
+# 1. Clone the repository
+git clone https://github.com/ShubhamG2004/vitalmind.git
+cd vitalmind
 
+# 2. Install dependencies
+npm install
+
+# 3. Create a `.env.local` file and add the following environment variables:
+# (Replace placeholder values with your actual keys)
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
+MONGODB_URI=your_mongodb_connection_string
+GEMINI_API_KEY=your_gemini_api_key
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+
+# 4. Run the development server
+npm run dev
+
+************************************
+## 🤝 Contributing
+
+This project is made possible with the contributions of:
+
+Abhijeet Khomane – Core Contributor
 
