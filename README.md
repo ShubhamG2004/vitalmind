@@ -1,6 +1,6 @@
-##🩺 VitalMind - Personal Health Diary with AI
+## 🩺 VitalMind - Personal Health Diary with AI
 
-##cProblem Statement - 
+## Problem Statement - 
 2. Personal Health Diary with AI
 Create a full-stack app that tracks user health data, uses AI to suggest improvements, and 
 stores data securely.
@@ -9,11 +9,11 @@ stores data securely.
 
 A full-stack AI-powered Personal Health Diary web application built with Next.js, MongoDB Atlas (via Azure), NextAuth for authentication, and Gemini API for AI-based health insights.
 
-##Overview
+## Overview
 
 This platform enables users to log their health records, receive AI-generated suggestions, and manage their wellness journey efficiently in one place. With secure authentication and cloud-based database integration, the app is responsive, scalable, and user-friendly.
 
-##🚀 Features:
+## 🚀 Features:
 
 1.User Authentication with NextAuth.js (Credentials + Google)
 
@@ -31,7 +31,7 @@ This platform enables users to log their health records, receive AI-generated su
 
 ****************************************
 
-##🛠 Tech Stack            Technology	Description:
+## 🛠 Tech Stack            Technology	Description:
 
 Next.js	           - React Framework for SSR & routing
 
@@ -46,7 +46,7 @@ Tailwind CSS	     - Utility-first CSS framework.
 *********************************************
 
 
-##(1)index.js Page :-
+## (1)index.js Page :-
 
 1.Responsive Landing Page: Features a modern UI with navbar (VitalMind logo + login/dashboard button) and responsive design for all devices.
 
@@ -62,7 +62,7 @@ Tailwind CSS	     - Utility-first CSS framework.
 
 
 *************************************
-##(2) dashboard.js 
+## (2) dashboard.js 
 
 1.Health Overview Dashboard: Shows key metrics like sleep, water intake, and mood trends in easy-to-read charts.
 
@@ -80,7 +80,7 @@ Tailwind CSS	     - Utility-first CSS framework.
 
 **************************************
 
-##(3)Health-log.js 
+## (3)Health-log.js 
 
 1. Daily Health Tracker: Simple form to log sleep, water, meals, mood, and notes with date picker.
 
@@ -92,7 +92,7 @@ Tailwind CSS	     - Utility-first CSS framework.
 
 ************************************
 
-##(4) Trends.js 
+## (4) Trends.js 
 
 1. Visual Health Trends: Interactive charts show your sleep, hydration, and mood patterns over time.
 
@@ -104,7 +104,7 @@ Tailwind CSS	     - Utility-first CSS framework.
 
 ************************************
 
-##(5) history.js 
+## (5) history.js 
 
 1. The History page displays all past health entries made by the user in a clean, card layout.
 
@@ -116,7 +116,7 @@ Tailwind CSS	     - Utility-first CSS framework.
 
 *************************************
 
-##(6)ai-chatbot.js
+## (6)ai-chatbot.js
 
 1. The AI Chatbot page allows users to get instant health tips using the Gemini API.
 
@@ -128,7 +128,7 @@ Tailwind CSS	     - Utility-first CSS framework.
 
 **************************************************
 
-##Process:- 
+## Process:- 
 
 1. Planning & Design
    
@@ -178,7 +178,7 @@ Deploy the app using Vercel for frontend and connect to MongoDB Atlas.
 
 
 ***************************************
-##- Future scope :
+## Future scope :
 
 
 1.Integration with Wearables: Sync with smartwatches and fitness bands (e.g., Fitbit, Apple Watch) to auto-log sleep, steps, heart rate, etc.
