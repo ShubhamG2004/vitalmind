@@ -139,7 +139,7 @@ Tailwind CSS	     - Utility-first CSS framework.
 
 **************************************************
 
-## Process:- 
+## Process
 
 1. Planning & Design
    
