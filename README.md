@@ -207,13 +207,13 @@ Deploy the app using Vercel for frontend and connect to MongoDB Atlas.
 
 1. Clone the repository
    
-  git clone https://github.com/ShubhamG2004/vitalmind.git
+   git clone https://github.com/ShubhamG2004/vitalmind.git
   
-  cd vitalmind
+   cd vitalmind
 
 2. Install dependencies
    
-  npm install
+   npm install
 
 3. Create a `.env.local` file and add the following environment variables:
    
@@ -235,7 +235,7 @@ Deploy the app using Vercel for frontend and connect to MongoDB Atlas.
 
 5. Run the development server
 
-npm run dev
+   npm run dev
 
 ************************************
 ## 🤝 Contributing
