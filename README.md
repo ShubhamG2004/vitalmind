@@ -24,6 +24,9 @@ A full-stack AI-powered Personal Health Diary web application built with Next.js
 
 This platform enables users to log their health records, receive AI-generated suggestions, and manage their wellness journey efficiently in one place. With secure authentication and cloud-based database integration, the app is responsive, scalable, and user-friendly.
 
+video link :https://drive.google.com/file/d/1-DXHtctFS3eafL5a37iobLQrh7EqcIdP/view?usp=sharing
+
+
 ## 🚀 Features:
 
 1.User Authentication with NextAuth.js (Credentials + Google)
