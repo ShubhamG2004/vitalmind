@@ -1,4 +1,4 @@
-## 🩺 VitalMind - Personal Health Diary with AI
+8## 🩺 VitalMind - Personal Health Diary with AI
 
 ## Problem Statement - 
 2. Personal Health Diary with AI
@@ -29,7 +29,7 @@ This platform enables users to log their health records, receive AI-generated su
 - Project link: https://vitalmind.vercel.app
 
 
-## 🚀 Features:
+## 🚀 Features
 
 1.User Authentication with NextAuth.js (Credentials + Google)
 
@@ -47,7 +47,7 @@ This platform enables users to log their health records, receive AI-generated su
 
 ****************************************
 
-## 🛠 Tech Stack            Technology	Description:
+## 🛠 Tech Stack            
 
 Next.js	           - React Framework for SSR & routing
 
@@ -194,7 +194,7 @@ Deploy the app using Vercel for frontend and connect to MongoDB Atlas.
 
 
 ***************************************
-## Future scope :
+## Future scope 
 
 
 1.Integration with Wearables: Sync with smartwatches and fitness bands (e.g., Fitbit, Apple Watch) to auto-log sleep, steps, heart rate, etc.
