@@ -26,6 +26,8 @@ This platform enables users to log their health records, receive AI-generated su
 
 - Video link :https://drive.google.com/file/d/1-DXHtctFS3eafL5a37iobLQrh7EqcIdP/view?usp=sharing
 
+- Project link: https://vitalmind.vercel.app
+
 
 ## 🚀 Features:
 
