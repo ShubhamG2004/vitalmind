@@ -1,19 +1,33 @@
-🩺 VitalMind - Personal Health Diary with AI
+## 🩺 VitalMind - Personal Health Diary with AI
 
-Problem Statement - 
+## Problem Statement - 
 2. Personal Health Diary with AI
 Create a full-stack app that tracks user health data, uses AI to suggest improvements, and 
 stores data securely.
 • Azure Service: Azure Health Bot + Azure Cosmos DB
 
-
 A full-stack AI-powered Personal Health Diary web application built with Next.js, MongoDB Atlas (via Azure), NextAuth for authentication, and Gemini API for AI-based health insights.
 
-Overview
+## 📑 Table of Contents
+
+- [Overview](#Overview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Web Pages](#Web-Pages)
+- [Process](#process)
+- [Future scope](#future-scope)
+- [Installation](#installation)
+- [Contributing](#contributing)
+
+
+## Overview
 
 This platform enables users to log their health records, receive AI-generated suggestions, and manage their wellness journey efficiently in one place. With secure authentication and cloud-based database integration, the app is responsive, scalable, and user-friendly.
 
-🚀 Features:
+- Video link :https://drive.google.com/file/d/1-DXHtctFS3eafL5a37iobLQrh7EqcIdP/view?usp=sharing
+
+
+## 🚀 Features:
 
 1.User Authentication with NextAuth.js (Credentials + Google)
 
@@ -31,7 +45,7 @@ This platform enables users to log their health records, receive AI-generated su
 
 ****************************************
 
-🛠 Tech Stack            Technology	Description:
+## 🛠 Tech Stack            Technology	Description:
 
 Next.js	           - React Framework for SSR & routing
 
@@ -44,9 +58,9 @@ Gemini API	       - AI integration for health recommendations
 Tailwind CSS	     - Utility-first CSS framework.
 
 *********************************************
-
-
-(1)index.js Page :-
+## Web Pages 
+********************************************
+## (1)index.js Page :-
 
 1.Responsive Landing Page: Features a modern UI with navbar (VitalMind logo + login/dashboard button) and responsive design for all devices.
 
@@ -62,7 +76,7 @@ Tailwind CSS	     - Utility-first CSS framework.
 
 
 *************************************
-(2) dashboard.js 
+## (2) dashboard.js 
 
 1.Health Overview Dashboard: Shows key metrics like sleep, water intake, and mood trends in easy-to-read charts.
 
@@ -80,7 +94,7 @@ Tailwind CSS	     - Utility-first CSS framework.
 
 **************************************
 
-(3)Health-log.js 
+## (3)Health-log.js 
 
 1. Daily Health Tracker: Simple form to log sleep, water, meals, mood, and notes with date picker.
 
@@ -92,7 +106,7 @@ Tailwind CSS	     - Utility-first CSS framework.
 
 ************************************
 
-(4) Trends.js 
+## (4) Trends.js 
 
 1. Visual Health Trends: Interactive charts show your sleep, hydration, and mood patterns over time.
 
@@ -104,7 +118,7 @@ Tailwind CSS	     - Utility-first CSS framework.
 
 ************************************
 
-(5) history.js 
+## (5) history.js 
 
 1. The History page displays all past health entries made by the user in a clean, card layout.
 
@@ -116,7 +130,7 @@ Tailwind CSS	     - Utility-first CSS framework.
 
 *************************************
 
-(6)ai-chatbot.js
+## (6)ai-chatbot.js
 
 1. The AI Chatbot page allows users to get instant health tips using the Gemini API.
 
@@ -126,6 +140,105 @@ Tailwind CSS	     - Utility-first CSS framework.
 
 ![image alt](https://github.com/ShubhamG2004/vitalmind/blob/master/ai_chatbot.png?raw=true)
 
+**************************************************
+
+## Process
+
+1. Planning & Design
+   
+Define the core features: user authentication, health entry logs, AI chatbot, history tracking, export options.
+
+Design wireframes for each page: Sign-in, Dashboard, AI Chatbot, History, etc.
+
+Choose your tech stack: Next.js, MongoDB Atlas, NextAuth, Gemini API, Tailwind CSS.
+
+2. Setting Up the Project
+   
+Initialize a Next.js app using npx create-next-app.
+
+Set up Tailwind CSS for styling.
+
+Connect MongoDB Atlas using mongoose and create schemas for user health data.
+
+Configure NextAuth for user authentication (Google + credentials).
+
+3. Building Pages
+
+Sign-In Page: Secure login form with email/password and Google authentication.
+
+Dashboard Page: Form to input health data (sleep, meals, water, notes, mood). Show AI suggestions.
+
+AI Chatbot Page: Connect with Gemini API to answer user questions.
+
+History Page: Show list of past entries with date, details, and AI advice.
+
+Export Feature: Allow downloading data as PDF or CSV using libraries like jspdf or papaparse.
+
+4. Integrating AI (Gemini API)
+   
+Create an API route in Next.js to send user input to Gemini.
+
+Parse the response and show suggestions in the UI.
+
+Store both input and response in MongoDB for history.
+
+5. Testing & Deployment
+   
+Test all user flows: signup, login, data entry, AI response, export, logout.
+
+Fix responsive design issues using Tailwind's utilities.
+
+Deploy the app using Vercel for frontend and connect to MongoDB Atlas.
 
 
+***************************************
+## Future scope :
+
+
+1.Integration with Wearables: Sync with smartwatches and fitness bands (e.g., Fitbit, Apple Watch) to auto-log sleep, steps, heart rate, etc.
+
+2.Advanced AI Insights: Use deeper machine learning models to detect health anomalies, suggest lifestyle improvements, or predict potential health risks.
+
+3.Doctor/Expert Access: Allow users to share their health logs with doctors or nutritionists and get real-time professional feedback.
+
+4.Medication Tracking: Add features to remind users about medications and track their intake patterns.
+
+5.Multilingual Support: Expand accessibility by offering the app in regional and international languages for wider user adoption.
+
+********************************************
+## Installation
+
+1. Clone the repository
+   
+   git clone https://github.com/ShubhamG2004/vitalmind.git
+  
+   cd vitalmind
+
+2. Install dependencies
+   
+   npm install
+
+3. Create a `.env.local` file and add the following environment variables:
+   
+   (Replace placeholder values with your actual keys)
+   
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+   
+   CLERK_SECRET_KEY=your_clerk_secret_key
+   
+   MONGODB_URI=your_mongodb_connection_string
+   
+   GEMINI_API_KEY=your_gemini_api_key
+   
+
+5. Run the development server
+
+   npm run dev
+
+************************************
+## 🤝 Contributing
+
+This project is made possible with the contributions of:
+
+Abhijeet Khomane – Core Contributor
 
