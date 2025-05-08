@@ -29,7 +29,7 @@ This platform enables users to log their health records, receive AI-generated su
 - Project link: https://vitalmind.vercel.app
 
 
-## 🚀 Features
+## Features
 
 1.User Authentication with NextAuth.js (Credentials + Google)
 
