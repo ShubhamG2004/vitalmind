@@ -95,9 +95,9 @@ export default function SignIn({ csrfToken }) {
 
           <div className="mt-6 text-center text-sm text-gray-600">
             Don&apos;t have an account?{' '}
-            <a href="/auth/signup" className="text-blue-600 hover:text-blue-800 font-medium">
+            <Link href="/auth/signup" className="text-blue-600 hover:text-blue-800 font-medium">
               Sign up
-            </a>
+            </Link>
           </div>
         </div>
       </div>
