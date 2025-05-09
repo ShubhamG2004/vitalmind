@@ -47,7 +47,7 @@ This platform enables users to log their health records, receive AI-generated su
 
 ****************************************
 
-## 🛠 Tech Stack            
+## Tech Stack            
 
 Next.js	           - React Framework for SSR & routing
 
