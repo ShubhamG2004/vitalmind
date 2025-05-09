@@ -1,4 +1,4 @@
-8## 🩺 VitalMind - Personal Health Diary with AI
+## 🩺 VitalMind - Personal Health Diary with AI
 
 ## Problem Statement - 
 2. Personal Health Diary with AI
@@ -238,7 +238,7 @@ Deploy the app using Vercel for frontend and connect to MongoDB Atlas.
    npm run dev
 
 ************************************
-## 🤝 Contributing
+## Contributing
 
 This project is made possible with the contributions of:
 
