@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { FiHome, FiActivity, FiTrendingUp, FiZap, FiUser, FiLogOut, FiMenu,FiArchive } from "react-icons/fi";
+import {
+  FiHome, FiActivity, FiTrendingUp, FiZap, FiUser, FiLogOut, FiMenu, FiArchive
+} from "react-icons/fi";
 import { signOut } from "next-auth/react";
 
 export default function Sidebar() {
@@ -22,19 +24,19 @@ export default function Sidebar() {
 
   return (
     <>
-     
+      {/* Mobile Toggle Button */}
       <input type="checkbox" id="sidebar-toggle" className="peer hidden" />
       <label
         htmlFor="sidebar-toggle"
-        className="fixed lg:hidden z-40 top-4 left-4 w-10 h-10 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center text-white cursor-pointer hover:shadow-lg transition-all shadow-md"
+        className="fixed top-4 left-4 z-40 w-10 h-10 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-lg flex items-center justify-center cursor-pointer shadow-md lg:hidden"
       >
         <FiMenu size={24} />
       </label>
 
-      
-      <div className="fixed top-0 left-0 h-screen w-72 bg-white text-gray-800 shadow-2xl transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out peer-checked:translate-x-0 z-30 border-r border-gray-100">
+      {/* Sidebar Panel */}
+      <div className="fixed top-0 left-0 z-30 h-full w-72 bg-white shadow-2xl transform -translate-x-full peer-checked:translate-x-0 transition-transform duration-300 ease-in-out lg:translate-x-0 lg:border-r border-gray-100">
         <div className="flex flex-col h-full p-6">
-       
+          {/* Brand Header */}
           <div className="flex items-center justify-center mb-10">
             <div className="flex flex-col items-center">
               <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center shadow-md mb-3">
@@ -47,6 +49,7 @@ export default function Sidebar() {
             </div>
           </div>
 
+          {/* Navigation Items */}
           <nav className="flex-1 space-y-2">
             {navItems.map((item) => (
               <Link
@@ -71,6 +74,7 @@ export default function Sidebar() {
             ))}
           </nav>
 
+          {/* Logout Button */}
           <button
             onClick={handleLogout}
             className="flex items-center px-4 py-3 rounded-xl mt-auto bg-gradient-to-r from-red-100 to-pink-100 text-red-600 hover:from-red-200 hover:to-pink-200 hover:text-red-700 transition-all shadow-sm border border-red-100"
@@ -83,9 +87,10 @@ export default function Sidebar() {
         </div>
       </div>
 
+      {/* Overlay on Mobile */}
       <label
         htmlFor="sidebar-toggle"
-        className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm z-20 lg:hidden hidden peer-checked:block cursor-pointer"
+        className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm z-20 hidden peer-checked:block lg:hidden"
       ></label>
     </>
   );

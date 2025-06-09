@@ -16,7 +16,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 export default function Trends() {
   const { data: session, status } = useSession();
   const [logs, setLogs] = useState([]);
-  const [timeRange, setTimeRange] = useState("week"); // 'week', 'month', or 'all'
+  const [timeRange, setTimeRange] = useState("week"); 
 
   useEffect(() => {
     if (status === "authenticated") {

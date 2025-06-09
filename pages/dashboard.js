@@ -52,7 +52,6 @@ export default function Dashboard() {
       setLogs(res.data);
       
       if (res.data.length > 0) {
-        
         const sleepSum = res.data.reduce((sum, log) => sum + (parseFloat(log.sleepHours) || 0), 0);
         const waterSum = res.data.reduce((sum, log) => sum + (parseFloat(log.waterIntake) || 0), 0);
 
@@ -60,7 +59,6 @@ export default function Dashboard() {
           (parseFloat(log.sleepHours) >= 7) && 
           (parseFloat(log.waterIntake) >= 2)
         ).length;
-        
         
         let streak = 0;
         const sortedLogs = [...res.data].sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -92,17 +90,14 @@ export default function Dashboard() {
     }
   };
 
-
   const getSuggestion = async () => {
     setLoading(true);
     setSuggestion(""); 
     try {
-      
       const today = new Date().toISOString().slice(0, 10);
       let targetLog = logs.find(log => log.date === today);
       
       if (!targetLog && logs.length > 0) {
-       
         const sortedLogs = [...logs].sort((a, b) => new Date(b.date) - new Date(a.date));
         targetLog = sortedLogs[0];
       }
@@ -127,7 +122,6 @@ export default function Dashboard() {
     }
   };
 
-
   useEffect(() => {
     if (status === 'authenticated') {
       fetchData();
@@ -142,7 +136,6 @@ export default function Dashboard() {
 
   if (status === 'loading') return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
   if (!session) return <div className="min-h-screen flex items-center justify-center">Please sign in to access dashboard.</div>;
-
 
   const last7Logs = [...logs]
     .sort((a, b) => new Date(a.date) - new Date(b.date))
@@ -201,26 +194,26 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto p-4 md:p-6">
-    
-      <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl shadow-md p-6 mb-8 border border-blue-100">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
+    <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 py-4">
+      {/* Recommendation Section */}
+      <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl shadow-sm sm:shadow-md p-4 sm:p-6 mb-6 border border-blue-100">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+          <h2 className="text-lg sm:text-xl font-bold text-gray-800 flex items-center gap-2">
             <FiActivity className="text-blue-600" /> 
             Health Assistant Recommendation
           </h2>
           <button 
             onClick={getSuggestion}
             disabled={loading}
-            className="text-sm bg-blue-100 hover:bg-blue-200 text-blue-800 px-3 py-1 rounded-full transition-colors"
+            className="text-xs sm:text-sm bg-blue-100 hover:bg-blue-200 text-blue-800 px-3 py-1 rounded-full transition-colors self-end sm:self-auto"
           >
             {loading ? 'Refreshing...' : 'Refresh'}
           </button>
         </div>
         
-        <div className="bg-white p-4 rounded-lg border border-gray-200">
+        <div className="bg-white p-3 sm:p-4 rounded-lg border border-gray-200">
           {loading ? (
-            <div className="flex items-center justify-center py-4">
+            <div className="flex items-center justify-center py-3 sm:py-4">
               <div className="animate-pulse flex space-x-4">
                 <div className="flex-1 space-y-4 py-1">
                   <div className="h-4 bg-gray-200 rounded w-3/4"></div>
@@ -232,56 +225,65 @@ export default function Dashboard() {
               </div>
             </div>
           ) : (
-            <p className="text-gray-700">{suggestion || "Loading health suggestions..."}</p>
+            <p className="text-sm sm:text-base text-gray-700">{suggestion || "Loading health suggestions..."}</p>
           )}
         </div>
       </div>
 
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+      {/* Stats Cards */}
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-6 sm:mb-8">
+        <div className="bg-white p-3 sm:p-4 md:p-6 rounded-lg sm:rounded-xl shadow-sm sm:shadow-md border border-gray-100">
           <div className="flex items-center justify-between">
-            <h3 className="text-gray-500 font-medium">Avg. Sleep</h3>
-            <FiClock className="text-blue-500 text-xl" />
+            <h3 className="text-xs sm:text-sm text-gray-500 font-medium">Avg. Sleep</h3>
+            <FiClock className="text-blue-500 text-lg sm:text-xl" />
           </div>
-          <p className="text-3xl font-bold mt-2 text-gray-800">{stats.avgSleep} <span className="text-sm text-gray-500">hours</span></p>
-          <p className="text-sm text-gray-500 mt-1">Last 7 days</p>
+          <p className="text-xl sm:text-2xl md:text-3xl font-bold mt-1 sm:mt-2 text-gray-800">
+            {stats.avgSleep} <span className="text-xs sm:text-sm text-gray-500">hours</span>
+          </p>
+          <p className="text-xs text-gray-500 mt-1">Last 7 days</p>
         </div>
 
-        <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+        <div className="bg-white p-3 sm:p-4 md:p-6 rounded-lg sm:rounded-xl shadow-sm sm:shadow-md border border-gray-100">
           <div className="flex items-center justify-between">
-            <h3 className="text-gray-500 font-medium">Avg. Water</h3>
-            <FiDroplet className="text-blue-500 text-xl" />
+            <h3 className="text-xs sm:text-sm text-gray-500 font-medium">Avg. Water</h3>
+            <FiDroplet className="text-blue-500 text-lg sm:text-xl" />
           </div>
-          <p className="text-3xl font-bold mt-2 text-gray-800">{stats.avgWater} <span className="text-sm text-gray-500">liters</span></p>
-          <p className="text-sm text-gray-500 mt-1">Last 7 days</p>
+          <p className="text-xl sm:text-2xl md:text-3xl font-bold mt-1 sm:mt-2 text-gray-800">
+            {stats.avgWater} <span className="text-xs sm:text-sm text-gray-500">liters</span>
+          </p>
+          <p className="text-xs text-gray-500 mt-1">Last 7 days</p>
         </div>
 
-        <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+        <div className="bg-white p-3 sm:p-4 md:p-6 rounded-lg sm:rounded-xl shadow-sm sm:shadow-md border border-gray-100">
           <div className="flex items-center justify-between">
-            <h3 className="text-gray-500 font-medium">Good Days</h3>
-            <FiSun className="text-yellow-500 text-xl" />
+            <h3 className="text-xs sm:text-sm text-gray-500 font-medium">Good Days</h3>
+            <FiSun className="text-yellow-500 text-lg sm:text-xl" />
           </div>
-          <p className="text-3xl font-bold mt-2 text-gray-800">{stats.goodDays} <span className="text-sm text-gray-500">days</span></p>
-          <p className="text-sm text-gray-500 mt-1">Sleep ≥7h & Water ≥2L</p>
+          <p className="text-xl sm:text-2xl md:text-3xl font-bold mt-1 sm:mt-2 text-gray-800">
+            {stats.goodDays} <span className="text-xs sm:text-sm text-gray-500">days</span>
+          </p>
+          <p className="text-xs text-gray-500 mt-1">Sleep ≥7h & Water ≥2L</p>
         </div>
 
-        <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+        <div className="bg-white p-3 sm:p-4 md:p-6 rounded-lg sm:rounded-xl shadow-sm sm:shadow-md border border-gray-100">
           <div className="flex items-center justify-between">
-            <h3 className="text-gray-500 font-medium">Current Streak</h3>
-            <FiTrendingUp className="text-green-500 text-xl" />
+            <h3 className="text-xs sm:text-sm text-gray-500 font-medium">Current Streak</h3>
+            <FiTrendingUp className="text-green-500 text-lg sm:text-xl" />
           </div>
-          <p className="text-3xl font-bold mt-2 text-gray-800">{stats.streak} <span className="text-sm text-gray-500">days</span></p>
-          <p className="text-sm text-gray-500 mt-1">Consecutive logging</p>
+          <p className="text-xl sm:text-2xl md:text-3xl font-bold mt-1 sm:mt-2 text-gray-800">
+            {stats.streak} <span className="text-xs sm:text-sm text-gray-500">days</span>
+          </p>
+          <p className="text-xs text-gray-500 mt-1">Consecutive logging</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-        <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
-          <h3 className="text-lg font-semibold mb-4 text-gray-800 flex items-center gap-2">
+      {/* Charts Section */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8">
+        <div className="bg-white p-4 sm:p-6 rounded-lg sm:rounded-xl shadow-sm sm:shadow-md border border-gray-100">
+          <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-gray-800 flex items-center gap-2">
             <FiDroplet className="text-blue-500" /> Water Intake Trend
           </h3>
-          <div className="h-64">
+          <div className="h-48 sm:h-64">
             <Bar 
               data={waterData} 
               options={{
@@ -307,11 +309,11 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
-          <h3 className="text-lg font-semibold mb-4 text-gray-800 flex items-center gap-2">
+        <div className="bg-white p-4 sm:p-6 rounded-lg sm:rounded-xl shadow-sm sm:shadow-md border border-gray-100">
+          <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-gray-800 flex items-center gap-2">
             <FiClock className="text-purple-500" /> Sleep Hours Trend
           </h3>
-          <div className="h-64">
+          <div className="h-48 sm:h-64">
             <Line 
               data={sleepData} 
               options={{
@@ -338,63 +340,26 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Mood Chart
-      <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 mb-8">
-        <h3 className="text-lg font-semibold mb-4 text-gray-800 flex items-center gap-2">
-          <FiHeart className="text-orange-500" /> Mood Trend (Last 7 Days)
-        </h3>
-        <div className="h-64">
-          <Line 
-            data={moodData} 
-            options={{
-              responsive: true,
-              maintainAspectRatio: false,
-              plugins: {
-                legend: {
-                  position: 'top',
-                },
-              },
-              scales: {
-                y: {
-                  min: 0,
-                  max: 10,
-                  ticks: {
-                    callback: function(value) {
-                      if (value === 10) return '😊 Great';
-                      if (value === 7.5) return '🙂 Good';
-                      if (value === 5) return '😐 Neutral';
-                      if (value === 2.5) return '😟 Low';
-                      if (value === 0) return '😡 Poor';
-                      return '';
-                    }
-                  }
-                }
-              }
-            }} 
-          />
-        </div>
-      </div> */}
-
       {/* Recent Meals */}
       {logs.length > 0 && (
-        <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
-          <h3 className="text-lg font-semibold mb-4 text-gray-800 flex items-center gap-2">
+        <div className="bg-white p-4 sm:p-6 rounded-lg sm:rounded-xl shadow-sm sm:shadow-md border border-gray-100">
+          <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-gray-800 flex items-center gap-2">
             <FiCoffee className="text-amber-500" /> Recent Meals
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
             {[...logs]
               .sort((a, b) => new Date(b.date) - new Date(a.date))
               .slice(0, 3)
               .map(log => (
-                <div key={log._id} className="border border-gray-200 rounded-lg p-4">
-                  <h4 className="font-medium text-gray-700 mb-2">
+                <div key={log._id} className="border border-gray-200 rounded-lg p-3 sm:p-4">
+                  <h4 className="font-medium text-sm sm:text-base text-gray-700 mb-1 sm:mb-2">
                     {new Date(log.date).toLocaleDateString('en-US', { 
                       weekday: 'short', 
                       month: 'short', 
                       day: 'numeric' 
                     })}
                   </h4>
-                  <p className="text-gray-600">
+                  <p className="text-xs sm:text-sm text-gray-600">
                     {log.meals || 'No meals recorded'}
                   </p>
                 </div>
